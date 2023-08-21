@@ -135,11 +135,10 @@ function summerShopping(target) {
         if (coupon == 'SELL200' ) {
             const discount = newTotalPrice * 0.20;
             discountElement.innerText = discount.toFixed(2);
-            
+
             const totalExpenses = newTotalPrice - discount;
 
             totalElement.innerText = totalExpenses.toFixed(2);
-            console.log('also worked');
             }
 
 
