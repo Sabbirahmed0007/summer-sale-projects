@@ -4,9 +4,8 @@
 
 
 
-// Declare a function called summerShoppoing
+
 function summerShopping(target) {
-    /// add the value of added button
     const addedItems = document.getElementById('added-items');
     const itemName = target.querySelector('.item-name').innerText;
     const itemPricestring = target.querySelector('.price').innerText;
@@ -14,7 +13,6 @@ function summerShopping(target) {
 
     const itemDesc = itemName + ' : ' + itemPrice.toFixed(2) + " Tk";
     const p = document.createElement('p');
-    // Set the value into new tag
     p.innerText = itemDesc;
     addedItems.appendChild(p);
 
@@ -24,11 +22,7 @@ function summerShopping(target) {
     const newTotalPrice = totalPrice + itemPrice;
     TotalPriceElement.innerText = newTotalPrice.toFixed(2) + " Tk";
 
-
-
-    // apply conditions to get the accurate output
-
-    // condition for apply button
+    // Apply conditions to get the accurate output
     const applyCouponBtn = document.getElementById('apply-coupon-btn');
     
     if (newTotalPrice >= 200) {
@@ -37,43 +31,41 @@ function summerShopping(target) {
         applyCouponBtn.setAttribute('disabled', true);
     }
 
-    // condition for make purchase button
+    // Condition for make purchase button
     const makePurchaseBtn = document.getElementById('make-purchase-btn');
     if (newTotalPrice > 0) {
         makePurchaseBtn.removeAttribute('disabled');
-        console.log('worked');
+        
     } else {
         makePurchaseBtn.setAttribute('disabled', true);
     }
 
-    
-    const couponField = document.getElementById('coupon-field');
-    const coupon= couponField.value.toUpperCase();
-    const discountElement = document.getElementById('discount');
-    const totalElement = document.getElementById('total');
+    // Apply button event listener
+    // const applyCouponBtn = document.getElementById('apply-coupon-btn');
+    applyCouponBtn.addEventListener('click', function () {
+        const couponField = document.getElementById('coupon-field');
+        const coupon = couponField.value.toUpperCase();
+        const discountElement = document.getElementById('discount');
+        const totalElement = document.getElementById('total');
 
+        if (newTotalPrice >= 200 ) {
+            if(coupon === 'SELL200'){
 
-    // || coupon === 'SELL200'
-    if(newTotalPrice >= 200  ){
-        if (coupon == 'SELL200' ) {
-            const discount = newTotalPrice * 0.20;
-            discountElement.innerText = discount.toFixed(2);
-
-            const totalExpenses = newTotalPrice - discount;
-
-            totalElement.innerText = totalExpenses.toFixed(2);
+                const discount =parseFloat(newTotalPrice * 0.20);
+                discountElement.innerText = discount.toFixed(2);
+                const totalExpenses = newTotalPrice - discount;
+                totalElement.innerText = totalExpenses.toFixed(2);
             }
-
-
-            
+            else{
+                alert('Accurate coupon code has not been applied. Please pay the full bill. You are eligible for the discount')
+            }
+        } else {
+            discountElement.innerText = '0.00';
+            totalElement.innerText = newTotalPrice.toFixed(2);
         }
-    
-
-        discountElement.innerText='0.00';
-        totalElement.innerText=newTotalPrice.toFixed(2);
-
-    
+    });
 
     
 }
+
 
