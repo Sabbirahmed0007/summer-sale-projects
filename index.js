@@ -20,7 +20,7 @@ function summerShopping(target) {
     const totalPriceString = TotalPriceElement.innerText;
     const totalPrice = parseFloat(totalPriceString);
     const newTotalPrice = totalPrice + itemPrice;
-    TotalPriceElement.innerText = newTotalPrice.toFixed(2) + " Tk";
+    TotalPriceElement.innerText = newTotalPrice.toFixed(2) ;
 
     // Apply conditions to get the accurate output
     const applyCouponBtn = document.getElementById('apply-coupon-btn');
@@ -58,6 +58,8 @@ function summerShopping(target) {
             }
             else{
                 alert('Accurate coupon code has not been applied. Please pay the full bill. You are eligible for the discount')
+                discountElement.innerText = '0.00';
+                totalElement.innerText = newTotalPrice.toFixed(2);
             }
         } else {
             discountElement.innerText = '0.00';
