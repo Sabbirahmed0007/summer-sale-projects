@@ -67,6 +67,13 @@ function summerShopping(target) {
         }
     });
 
+    document.getElementById('go-home').addEventListener('click', goHome())
+
+    function goHome(target){
+        window.reload(target);
+        console.log('go home');
+    }
+
     
 }
 
