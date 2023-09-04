@@ -15,13 +15,14 @@ function summerShopping(target) {
     const p = document.createElement('p');
     p.innerText = itemDesc;
     addedItems.appendChild(p);
-
+    
     const TotalPriceElement = document.getElementById('total-price');
     const totalPriceString = TotalPriceElement.innerText;
     const totalPrice = parseFloat(totalPriceString);
     const newTotalPrice = totalPrice + itemPrice;
     TotalPriceElement.innerText = newTotalPrice.toFixed(2) ;
-
+    const totalElement = document.getElementById('total');
+    totalElement.innerText=newTotalPrice.toFixed(2) ;
     // Apply conditions to get the accurate output
     const applyCouponBtn = document.getElementById('apply-coupon-btn');
     
@@ -30,7 +31,7 @@ function summerShopping(target) {
     } else {
         applyCouponBtn.setAttribute('disabled', true);
     }
-
+    
     // Condition for make purchase button
     const makePurchaseBtn = document.getElementById('make-purchase-btn');
     if (newTotalPrice > 0) {
@@ -57,7 +58,7 @@ function summerShopping(target) {
                 totalElement.innerText = totalExpenses.toFixed(2);
             }
             else{
-                alert('Accurate coupon code has not been applied. Please pay the full bill. You are eligible for the discount')
+                alert('Accurate coupon code has not been applied. Please pay the full bill. You are not eligible for the discount')
                 discountElement.innerText = '0.00';
                 totalElement.innerText = newTotalPrice.toFixed(2);
             }
@@ -66,14 +67,14 @@ function summerShopping(target) {
             totalElement.innerText = newTotalPrice.toFixed(2);
         }
     });
-
+    
     document.getElementById('go-home').addEventListener('click', goHome())
-
-    function goHome(target){
-        window.reload(target);
+    
+    function goHome(){
+        window.reload();
         console.log('go home');
     }
-
+    
     
 }
 
